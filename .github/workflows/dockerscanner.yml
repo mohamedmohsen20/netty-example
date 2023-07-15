@@ -18,9 +18,17 @@ jobs:
        VERSION: v1
      
      steps:
-     - name: Checkout
-       uses: actions/checkout@v1
-       
+     - name: Get code
+       uses: actions/checkout@v3
+     - name: build Jarfile
+       run: mvn install
+     - name: upload artifcats
+       uses: actions/upload-artifact@v3.1.1
+       with:
+        name: project.war
+        path: src
+     
+     
      - name: Build Docker Image
        run: docker build -t $TAG .
        
@@ -39,3 +47,10 @@ jobs:
        with:
           sarif_file: 'trivy-image-results.sarif'
           category: 'image'
+
+
+
+
+
+
+
