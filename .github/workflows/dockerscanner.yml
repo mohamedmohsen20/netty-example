@@ -2,14 +2,7 @@ name: Build-Docker-Image
 
 on: 
   workflow_dispatch:
-  push:
-    branches:
-      - master
-      - dev
-  pull_request:
-    branches: 
-    - master
-    - dev
+
 jobs:
   build_docker_img:
      runs-on: ubuntu-latest
